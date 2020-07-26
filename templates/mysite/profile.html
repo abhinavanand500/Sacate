@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+  {% block css %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+      integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+      crossorigin="anonymous"
+    />
+    
+  {% endblock css %}
+{% block title %} Profile {% endblock title %}
+{% block activeProfile %} active {% endblock activeProfile %}
+{% block body %}
+  <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-md-10 col-11 mx-auto">
+          <nav aria-label="breadcrumb card" class="mb-3">
+            <ol class="breadcrumb bg-common">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Profile Settings
+              </li>
+            </ol>
+          </nav>
+
+          <div class="row">
+            <div class="col-lg-3 col-md-4 d-md-block">
+              <div class="card bg-common card-left bg-common">
+                <div class="card-body">
+                  <nav class="nav d-md-block d-none ">
+                    <a data-toggle="tab" class="nav-link active" aria-current="page" href="#profile"><i class="fa fa-user mr-1" aria-hidden="true"></i>  Profile</a>
+                    <a data-toggle="tab" class="nav-link" href="#account"><i class="fa fa-user-cog mr-1" aria-hidden="true"></i>  Account Settings</a>
+                    <a data-toggle="tab" class="nav-link" href="#security"><i class="fa fa-user-shield mr-1" aria-hidden="true"></i>  Security</a>
+                    <a data-toggle="tab" class="nav-link" href="#notification"><i class="fa fa-bell mr-1" aria-hidden="true"></i>  Notification</a>
+                  </nav>
+                </div>
+              </div>
+            </div>
+            <!-- right side -->
+            <div class="col-lg-9 col-md-8 ">
+                <div class="card">
+                    <div class="card-header border-bottom mb-3 d-md-none">
+                        <ul class="nav nav-tabs card-header-tabs nav-fill">
+                            <li class="nav-item">
+                              <a data-toggle="tab" class="nav-link active" aria-current="page" href="#profile"><i class="fa fa-user mr-1" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                              <a data-toggle="tab" class="nav-link" href="#account"><i class="fa fa-user-cog mr-1" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                              <a data-toggle="tab" class="nav-link" href="#security"><i class="fa fa-user-shield mr-1" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-toggle="tab" class="nav-link" href="#notification"><i class="fa fa-bell mr-1" aria-hidden="true"></i></a>
+                            </li>
+                            
+                          </ul>
+                    </div>
+                    
+                    <div class="card-body tab-content border-0">
+                    <!-- profile  -->
+                        <div class="tab-pane active" id="profile">
+                                <!-- <h1>This is profile</h1> -->
+                            <h4>YOUR PROFILE INFORMATION</h4>
+                            <hr>
+                            <form action="/profile" method="POST">
+                            {% csrf_token %}
+                              {% for datas in data %}
+                                <div class="row">
+                                <div class="mb-3 col-6">
+                                    <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Name" value="{{datas.firstname}}" name="fnamea">
+                                    <small class="form-text text-muted">Please Enter your First Name</small>
+                                </div>
+                                <div class="mb-3 col-6">
+                                    <label for="exampleFormControlInput2" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Enter your Name" value="{{datas.lastname}}" name="lnamea">
+                                    <small class="form-text text-muted">Please Enter your Last Name</small>
+                                </div>
+                                </div>
+                                <fieldset disabled aria-label="Disabled fieldset example">
+                                    <div class="mb-3">
+                                        <label for="disabledTextInput" class="form-label">Username</label>
+                                        <input type="text" id="disabledTextInput" class="form-control" placeholder="Enter your Username" value="{{ datas.username }}">
+                                        <small class="form-text text-muted">You can not change Your Username</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="disabledTextInput" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="disabledTextInput" placeholder="Enter your Email" value='{{ datas.email }}'>
+                                        <small class="form-text text-muted">Please Enter your current Email</small>
+                                    </div>
+                                </fieldset>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Phone</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Phone Number" value="{{datas.phone}}" name="phone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Address" value="{{datas.address}}" name="address">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Postal-Code</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Postal-Code" value="{{datas.pin}}" name="pin">
+                                </div>
+                                <div class="form-group form-text text-muted small">
+                                    Please check your Details and update it, if it is Incorrect
+                                </div>
+                                {% endfor %}
+                                <br>
+                                <button class="btn btn-outline-info mx-1" type="submit">Update Profile</button>
+                                <button class="btn btn-outline-info mx-1" type="reset">Reset</button>
+                            </form>
+                        </div>
+                    <!-- account -->
+                        <div class="tab-pane" id="account">
+                            <h4>ACCOUNT SETTINGS</h4>
+                            <hr>
+                            <form action="/delete" method="POST">
+                            {% csrf_token %}
+                            {% for datas in data %}
+                                <div class="mb-3">
+                                    <fieldset disabled aria-label="Disabled fieldset example">
+                                    <label for="disabledTextInput" class="form-label">Username</label>
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="{{datas.username}}">
+                                    </fieldset>
+                                    <small class="form-text text-muted">You will loose all your data if you delete this Account.</small><hr>
+                                    <h6 style="color: red;">DELETE ACCOUNT</h6><br>
+                                    <button class="btn btn-outline-danger mx-1" type="submit">DELETE</button><br>
+                                    <small class="form-text text-muted">Are you sure you want to <span style="color: red;">delete this Permanently</span></small>
+                                </div>
+                                {% endfor %}
+                            </form>
+                        </div>
+                    <!-- Security -->
+                        <div class="tab-pane" id="security">
+                            <h4>SECURITY</h4>
+                            <hr>
+                            <form action="/changepassword" method="POST">
+                              {% csrf_token %}
+                                <label for="inputPassword5" class="form-label">Change Password</label>
+                                <input type="password" id="inputPassword5" class="form-control my-1" aria-describedby="passwordHelpBlock" placeholder="Enter your Old Password" name="old"><br>
+                                <input type="password" id="inputPassword6" class="form-control my-1" aria-describedby="passwordHelpBlock" placeholder="Enter your New Password" name="new">
+                                <input type="password" id="inputPassword7" class="form-control my-1" aria-describedby="passwordHelpBlock" placeholder="Confirm your New Password" name="new1">
+                                <div id="passwordHelpBlock" class="form-text">
+                                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                                </div><hr>
+                                <button class="btn btn-outline-info mx-1" type="submit">CHANGE YOUR PASSWORD</button><br>
+                            </form>
+                            <hr>
+                            <h5 class="mb-2">Sessions</h5>
+                            <p class="text-muted small">This is the list of Device From which you have logged into your account</p>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div>
+                                        <h6>Ranchi</h6>
+                                        <small class="text-muted">Your Current Session is in INDIA</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    <!-- Notification -->
+                        <div class="tab-pane" id="notification">
+                            <h4>NOTIFICATION</h4>
+                            <hr>
+                            <form>
+                                <h6>Security Alerts</h6>
+                                <div id="passwordHelpBlock" class="form-text">
+                                    Recieve Security Alert message in your Email
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    Email each time when your account gets logged In
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                    Email your all ongoing detail of each months
+                                    </label>
+                                </div><hr>
+                                <!-- sms notification part -->
+                                <div class="mb-3">
+                                    <label class="d-block">SMS Notification</label>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div>
+                                                <h6>Comments</h6>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input ml-1" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div>
+                                                <h6>Reminders</h6>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input ml-1" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div>
+                                                <h6>Events</h6>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input ml-1" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div>
+                                                <h6 class="ml-1">Updates From People</h6>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input ml-1" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-outline-info mx-1 my-2" type="submit">UPDATE YOUR NOTIFICATION SETTINGS</button><br>
+                                    <small class="form-text text-muted">Are you sure you want to <span style="color: green;">update your notification settings</span></small>
+                                </div>
+                            </form>
+                        </div>
+                    <!-- Billing -->
+                        <div class="tab-pane" id="billing">
+                            <h4>BILLING SETTING</h4><hr>
+                            <form >
+                                <h5 class="form-text text-muted">Enter your Card Details</h5>
+                                <div class="col-md-6">
+                                  <label for="inputEmail4" class="form-label">First Name On Card</label>
+                                  <input type="email" class="form-control" id="inputEmail4">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputEmail4" class="form-label">Last Name On Card</label>
+                                    <input type="email" class="form-control" id="inputEmail4">
+                                </div>
+                                <div class="col-12">
+                                  <label for="inputAddress" class="form-label">Card Number</label>
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="Enter your Card Number">
+                                </div>
+                                <div class="col-12">
+                                  <label for="inputAddress2" class="form-label">Confirm Card Number</label>
+                                  <input type="text" class="form-control" id="inputAddress2" placeholder="Enter your Card Number again to Confirm">
+                                </div>
+                                <div class="col-md-7">
+                                  <label for="inputCity" class="form-label">Enter Date</label>
+                                  <input type="text" class="form-control" id="inputCity" placeholder="DD/MM/YYYY">
+                                </div>
+                                <div class="col-md-3">
+                                  <label for="inputZip" class="form-label">CVV</label>
+                                  <input type="text" class="form-control" id="inputZip">
+                                </div>
+                                <div class="col-12">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label" for="gridCheck">
+                                      Check me out
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                  <button type="submit" class="btn btn-primary">Add This Card Details</button>
+                                </div>
+                              </form><hr>
+                              <div>
+                                  <h5>Your Saved Card</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <div>
+                                            <h6>Abhinav Anand</h6>
+                                            <small class="text-muted">Your Details are safe with us</small>
+                                        </div>
+                                    </li>
+                                </ul>
+                              </div>
+                        </div>
+                    </div>
+                    <!-- actual profile page -->
+
+
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    
+
+    <title>Admin Panel</title>
+  </head>
+  <body class="bg-right">
+    
+
+    <!-- Optional JavaScript -->
+    <!-- Popper.js first, then Bootstrap JS -->
+    
+  </body>
+</html> {% endcomment %}

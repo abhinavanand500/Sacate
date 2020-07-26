@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %} Donation Camp Dashboard {% endblock title %}
+
+{% block css %}
+    body{
+      background-color : #FDF2E9  ;
+        font-family: 'Karla', sans-serif;
+      }
+{% endblock css %}
+
+
+{% block activeDashboard %} active {% endblock activeDashboard %}
+
+{% block body %}
+    <div class="container mt-5">
+    <h3>DONATION CAMP DASHBOARD</h3>
+        <hr>
+        <h4>Clothes Details</h4>
+        {% for cloth in clothes %}
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <h4><pre>User         :: {{cloth.user}}</pre></h4>
+                        <h4><pre>Address      :: {{cloth.address}}</h4>
+                        <h4><pre>Contact      :: {{cloth.phone}}</h4>
+                        <h4><pre>Requested At :: {{cloth.timestamp}}</h4>
+                    </div>
+                    <div class="col-md-4 col-sm-12 ">
+                        <a href="/acceptCloth/{{cloth.no}}" class="btn btn-success mx-1 my-1">Accept</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><span style="color: tomato;">{{cloth.user}}</span> wants to donate clothes for {{cloth.clothType}}</h5>
+                <hr>
+                <h5 style="color: darkcyan;">Description - </h5>
+                <p class="card-text">{{cloth.clothDescription}}</p>    
+            </div>
+        </div>
+        {% endfor %}
+        <br>
+        <hr>
+        <br>
+        <h4>Food Details</h4>
+        {% for food in foods %}
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <h4><pre>User         :: {{food.user}}</pre><h4>
+                        <h4><pre>Address      :: {{food.address}}</pre></h4>
+                        <h4><pre>Contact      :: {{food.phone}}</pre></h4>
+                        <h4><pre>Requested at :: {{food.timestamp}}</pre></h4>
+                    </div>
+                    <div class="col-md-4 col-sm-12 ">
+                        <a href="/acceptFood/{{food.no}}" class="btn btn-success mx-1 my-1">Accept</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><span style="color: tomato;">{{food.user}}</span> wants to donate <span style="color: chocolate;">{{food.foodStatus}} foods</span></h5>
+                <hr>
+                <h5 style="color: darkcyan;">Description - </h5>
+                <p class="card-text">{{food.foodDescription}}</p>    
+            </div>
+        </div>
+        {% endfor %}
+        <br>
+        <hr>
+        <br>
+        <h4>Other Details</h4>
+        {% for other in others %}
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <h4><pre>User         :: {{other.user}}</pre><h4>
+                        <h4><pre>Address      :: {{other.address}}</pre></h4>
+                        <h4><pre>Contact      :: {{other.phone}}</pre></h4>
+                        <h4><pre>Requested at :: {{other.timestamp}}</pre></h4>
+                    </div>
+                    <div class="col-md-4 col-sm-12 ">
+                        <a href="/acceptOther/{{other.no}}" class="btn btn-success mx-1 my-1">Accept</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><span style="color: tomato;">{{other.user}}</span> wants to donate <span style="color: chocolate;">some necessary items</span></h5>
+                <hr>
+                <h5 style="color: darkcyan;">Description - </h5>
+                <p class="card-text">{{other.otherDescription}}</p>    
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock body %}

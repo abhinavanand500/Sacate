@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Donate Clothes {% endblock title %}
+  {% block css %}
+    body{
+      background-color : #FDF2E9  ;
+        font-family: 'Karla', sans-serif;
+      }
+
+      .jumbotron{
+        background-color : #DC7633;
+      }
+  {% endblock css %}
+
+  {% block activeContact %} active {% endblock activeContact %}
+  {% block body %}
+    <div class="container mt-5">
+    <h3>Enter the Clothes </h3>
+        <hr>
+        <form action="/donateCloth" method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="clothType">Gender</label>
+                <select id="clothType" name="clothType" class="form-control">
+
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                  <label for="exampleClothDescription">Description of what you want to donate</label>
+                  <textarea class="form-control" id="exampleClothDescription" name="exampleClothDescription" cols="20" rows="5"></textarea>
+              </div>
+                <br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div><br><br><br><br><br><br><br>
+{% endblock body %}

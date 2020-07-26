@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+  {% block css %}
+    body{
+      background-color : #FDF2E9  ;
+        font-family: 'Karla', sans-serif;
+      }
+
+      .jumbotron{
+        background-color : #DC7633;
+      }
+  {% endblock css %}
+{% block title %} About {% endblock title %}
+{% block activeAbout %} active {% endblock activeAbout %}
+{% block body %}
+    <div class="container">
+        <div class="jumbotron my-3">
+          <h1 class="display-4">Your Kindness. Our Platform</h1>
+          <p class="lead">We’ve all been there. We all wish to do our part to help our society grow but finding a way can sometimes feel like searching for a needle in a haystack. We might end up giving up...</p>
+          <hr class="my-4">
+          <p>Kindness may sometimes feel like a luxury. We're here to change that. There are dozens of people who are ready to step out and deliver the help people need and there are thousands more who contribute by providing the recources. We understand how important it is for these people to connect.
+            This platform is built to bridge the gap between us. </p>
+          <h2>Don’t know who needs you? We’ve got you covered.</h2>
+          <p>The platform connects multiple Distribution camps with kind souls that are looking to donate the things they can spare. Food, clothing or anything you think can help. </p>
+          <h2>Let’s us make it short.</h2>
+          <p>We’ve got a short story to tell. To Register. Login. Tell us what you want to donate. Get connected.</p>
+          <a class="btn btn-primary btn-lg" href="/donateFood" role="button">Donate Food</a>
+          <a class="btn btn-primary btn-lg" href="/donateCloth" role="button">Donate Cloths</a>
+        </div>
+    </div>
+{% endblock body %}

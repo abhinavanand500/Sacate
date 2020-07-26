@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Donate Food {% endblock title %}
+  {% block css %}
+    body{
+      background-color : #FDF2E9  ;
+        font-family: 'Karla', sans-serif;
+      }
+
+      .jumbotron{
+        background-color : #DC7633;
+      }
+  {% endblock css %}
+
+  {% block activeHome %} active {% endblock activeHome %}
+  {% block body %}
+    <div class="container mt-5">
+    <h3>Enter the Food items</h3>
+        <hr>
+        <form action="/donateFood" method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="foodStatus">Food Status</label>
+                <select id="foodStatus" name="foodStatus" class="form-control">
+
+                    <option value="Uncooked">Uncooked</option>
+                    <option value="Cooked">Cooked</option>
+                </select>
+              </div>
+              <div class="form-group">
+                  <label for="exampleFoodDescription">Description of what you want to donate</label>
+                  <textarea class="form-control" id="exampleFoodDescription" name="exampleFoodDescription" cols="20" rows="5"></textarea>
+              </div>
+                <br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div><br><br><br><br><br><br><br>
+{% endblock body %}

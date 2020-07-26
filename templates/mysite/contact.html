@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Contact {% endblock title %}
+
+{% block css %}
+    body{
+      background-color : #FDF2E9  ;
+        font-family: 'Karla', sans-serif;
+      }
+{% endblock css %}
+
+
+{% block activeContact %} active {% endblock activeContact %}
+
+{% block body %}
+    <div class="container mt-5">
+    <h3>Contact SAC Admin</h3>
+    <h6>Note : Please Provide your information in issue block in order to make this account as Donation Camp Admin Account</h6>
+        <hr>
+        <form action="/contact" method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" name="name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Phone</label>
+                <input type="text" class="form-control" name="phone" id="exampleInputPassword1">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword2">Describe your issue</label>
+                  <textarea class="form-control" id="exampleInputPassword2" name="content" cols="20" rows="5"></textarea>
+              </div>
+                <br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock body %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+  {% block css %}
+    body{
+      background-color : #FDF2E9  ;
+        font-family: 'Karla', sans-serif;
+      }
+      .jumbotron{
+        background-color : #DC7633;
+      }
+      a {
+        color: #0060B6;
+        text-decoration: none;
+    }
+    
+    a:hover 
+    {
+         color:#00A0C6; 
+         text-decoration:none; 
+         cursor:pointer;  
+    }
+  {% endblock css %}
+{% block title %} Home {% endblock title %}
+{% block activeHome %} active {% endblock activeHome %}
+{% block body %}
+    <div class="container">
+        <div class="jumbotron my-3">
+          <h1 class="display-4">Welcome to Sac.</h1>
+          <hr class="my-4">
+          <p class="lead">Donate, because your Extra can be someone’s Need.</p>
+          <p>What do you want to donate ?</p>
+          <a class="btn btn-dark btn-lg" href="/donateFood" role="button">Donate Food</a>
+          <a class="btn btn-dark btn-lg" href="/donateCloth" role="button">Donate Cloths</a>
+          <a class="btn btn-dark btn-lg" href="/donateOther" role="button">Donate Other Necessities</a>
+          <a class="btn btn-dark btn-lg" href="https://www.pmcares.gov.in/en/" role="button">Donate Money at PM care fund</a>
+          <br><br>
+          <p>If you Want to open Donation Camp, Signup and send your proof through Contact Form</p>
+        </div>
+
+        <div class="row my-2">
+          <div class="bg-dark col-lg-6 col-md-12 text-center text-white overflow-hidden">
+            <div class="my-3 py-3">
+              <h2 class="display-5">COVID-19</h2>
+              <p class="lead">The global pandemic.</p>
+              <p>Coronavirus disease 2019 (COVID-19) is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). It was first identified in December 2019 in Wuhan, Hubei, China, and has resulted in an ongoing pandemic. The World Health Organization (WHO) declared the COVID‑19 outbreak a pandemic on 11 March 2020. The United Nations (UN) and WHO have praised India's response to the pandemic as 'comprehensive and robust,' terming the lockdown restrictions as 'aggressive but vital' for containing the spread and building necessary healthcare infrastructure.</p>
+            </div>
+            <div><img src="https://source.unsplash.com/rnr8D3FNUNY" class="bg-light shadow-sm mx-auto" style="width: 100%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
+          </div>
+          <div class="bg-light col-lg-6 col-md-12 text-center overflow-hidden">
+            <div class="my-3 p-3">
+              <h2 class="display-5">PM Care Fund</h2>
+              <p class="lead">National fund by the people, for the people.</p>
+              <p>A public charitable trust fund set up to strength the battle against COVID-19. Aimed with the mission to support and provide assistance to public healthcare in kind of emergency, calamity or distress. Provides funding to relevant research and creation or upgradation of healthcare and pharmaceutical companies. PM-CARES fund is said to solely and entirely consist voluntary contributions from any individual(s) and/or organization(s), and does not receive budgetary support to further the cause. </p>
+            </div>
+            <div><img src="https://i2.wp.com/www.inventiva.co.in/wp-content/uploads/2020/06/PM-cares.jpg?fit=1248%2C702&ssl=1" class="bg-dark shadow-sm mx-auto" style="width: 100%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
+          </div>
+        </div>
+        <div class="row my-2">
+          <div class="bg-light col-lg-6 col-md-12 text-center overflow-hidden">
+            <div class="my-3 p-3">
+              <h2 class="display-5">The Effect of COVID-19</h2>
+              <p class="lead">Struggles of the nation.</p>
+              <p>India's economy has witnessed massive shock due to the COVID-19 pandemic. The livelihoods and wage-earnings of low-income families have been impacted and many people face unemployment challenges. Ensuring adquate supply of food and essentials has been a challange in this time of crisis. Thankfully there are many NGO'S and organizations setup to help the country's poor become self-sufficient and better prepared.</p>
+            </div>
+            <div><img src="https://c.ndtvimg.com/2020-05/f140moj4_coronavirus-india-reuters_650x400_01_May_20.jpg" class="bg-dark shadow-sm mx-auto" style="width: 100%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
+          </div>
+          <div class="bg-dark col-lg-6 col-md-12 text-center text-white overflow-hidden">
+            <div class="my-3 py-3">
+              <h2 class="display-5">Flatten The Curve</h2>
+              <p class="lead">What is it and how can we tackle it?</p>
+              <p>In epidemiology, the idea of slowing a virus' spread so that fewer people need to seek treatment at any given time is known as "flattening the curve." This helps prevent healthcare systems from becoming overwhelmed. As there is currently no vaccine or specific medication to treat COVID-19 the best way to flatten the curve is through the collective action. Maintaning social distance, wearing mask, self isolation and taking adquate precautions is the best way to prevent the spread and do your part in this time of crisis. </p>
+            </div>
+            <div><img src="https://source.unsplash.com/avt0TnE_NS0" class="bg-light shadow-sm mx-auto" style="width: 100%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
+          </div>
+        </div>
+    </div>
+{% endblock body %}

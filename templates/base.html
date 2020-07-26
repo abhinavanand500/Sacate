@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./static/mysite/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+      integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+      crossorigin="anonymous"
+    />
+      <style type="text/css">
+      
+        {% block css %}
+            @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Da 2', cursive;
+}
+
+.bg-common{
+    background-color: rgba(180, 211, 233, 0.6);
+}
+
+
+.nav-link, .breadcrumb-item{
+    padding: 10px 0 10px 30px;
+    transition: all .2s;
+    color: #06092e;
+}
+
+.nav-link:hover, .breadcrumb-item a{
+    color: rgb(219, 63, 63);
+    text-decoration: none;
+}
+
+.card{
+    box-shadow: 0 0 8px 2px rgba(8, 4, 4, 0.6);
+}
+        {% endblock css %}
+        .Blue{
+              background-color: aquamarine;
+            }
+    </style>
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">SAC</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {% block activeHome %} {% endblock activeHome %}">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item {% block activeProfile %} {% endblock activeProfile %}">
+            <a class="nav-link" href="/profile">Profile</a>
+            <li class="nav-item {% block activeNotification %} {% endblock activeNotification %}">
+            <a class="nav-link" href="/notify">Notifications</a>
+          </li>
+          {% endif %}
+          {% if request.user.is_superuser %}
+            <li class="nav-item {% block activeDashboard %} {% endblock activeDashboard %}">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          {% endif %}
+          <li class="nav-item {% block activeAbout %} {% endblock activeAbout %}">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+            <li class="nav-item {% block activeFeed %} {% endblock activeFeed %}">
+            <a class="nav-link" href="/tweet">Feed</a>
+          </li>
+          <li class="nav-item {% block activeContact %} {% endblock activeContact %}">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          
+
+        </ul>
+        <div class="ml-auto form-inline ">
+          <a class="btn btn-outline-success my-2 my-sm-2" href="https://web-chat.global.assistant.watson.cloud.ibm.com/preview.html?region=eu-gb&integrationID=2f56951f-120f-4309-92a2-dcdd4580ab57&serviceInstanceID=aee528ff-74f7-4657-b398-d01bb7a36378" role="button">Chat With SacBot</a>
+
+            <!-- Button trigger modal -->
+        {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Welcome {{ request.user }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/handleLogout">Logout</a>
+                    </div>
+                  </li>
+            </ul>
+
+        {% else %}
+        <button type="button" class="btn btn-success mr-2 ml-2" data-toggle="modal" data-target="#signinModal">
+          Login
+        </button>
+
+        <button type="button" class="btn btn-success mr-2 ml-2" data-toggle="modal" data-target="#signupModal">
+          SignUp
+        </button>
+
+
+
+        {% endif %}
+
+
+        </div>
+      </div>
+     </nav>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
+          <strong>Message : </strong> {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+
+
+<!-- Sign Up Modal -->
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="signupModal">SignUp Here</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/handleSignup" method="post">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input type="text" class="form-control" id="fname" name="fname" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" class="form-control" id="lname" name="lname" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="emailid">Email</label>
+                    <input type="email" class="form-control" id="emailid" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="pass1" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword2">Confirm your Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" name="pass2" required>
+                  </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+{#        Login MOdal#}
+     <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="signinModal">Login Here</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/handleLogin" method="post">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="user">Username</label>
+                    <input type="text" class="form-control" id="loginuser" name="loginusername">
+                  </div>
+                  <div class="form-group">
+                    <label for="loginpass">Password</label>
+                    <input type="password" class="form-control" id="loginpass" name="loginpass">
+                  </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    {% block body %}
+    {% endblock body %}
+    {% block js %}
+
+    {% endblock js %}
+    <br><br>
+    <!-- Footer -->
+<footer class="page-footer font-small Blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> NASSCOM Hackathon : Recode</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
