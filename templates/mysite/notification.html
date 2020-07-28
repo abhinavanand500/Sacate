@@ -6,6 +6,7 @@
       background-color : #FDF2E9  ;
         font-family: 'Karla', sans-serif;
       }
+
 {% endblock css %}
 
 {% block activeNotification %} active {% endblock activeNotification %}
@@ -26,14 +27,14 @@
                         <h4><pre>Contact      :: {{noti.phone}}</h4>
                         <h4><pre>Accepted At  :: {{noti.timestamp}}</h4>
                     </div>
-                
+
                 </div>
             </div>
             <div class="card-body">
                 <h5 class="card-title"><span style="color: tomato;">{{noti.superuser}}</span> accepted your request to donate {{noti.type1}}</h5>
                 <hr>
                 <h5 style="color: darkcyan;">Description - </h5>
-                <p class="card-text">{{noti.description}}</p>    
+                <p class="card-text">{{noti.description}}</p>
             </div>
         </div>
         {% endfor %}

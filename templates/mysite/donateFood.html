@@ -14,7 +14,7 @@
   {% block activeHome %} active {% endblock activeHome %}
   {% block body %}
     <div class="container mt-5">
-    <h3>Enter the Food items</h3>
+    <h3>Please fill in the details of your donation.</h3>
         <hr>
         <form action="/donateFood" method="POST">
             {% csrf_token %}
@@ -33,5 +33,10 @@
                 <br>
               <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </div><br><br><br><br><br><br><br>
+        <br><br>
+        <h4 style="color:red">Please Note:</h4>
+        <h5>Once you submit, your donation will be visible to the registered distributors. Please specify the shelf life of the products and ensure that all the details are entered correctly before you hit submit and please do not submit multiple responses for the same donation. Thank You!</h5>
+    </div>
+
+        <br><br><br><br><br><br>
 {% endblock body %}

@@ -6,6 +6,9 @@
       background-color : #FDF2E9  ;
         font-family: 'Karla', sans-serif;
       }
+     <!--.aa{-->
+     <!--   color:"red"-->
+     <!--}-->
 {% endblock css %}
 
 
@@ -14,15 +17,16 @@
 {% block body %}
     <div class="container mt-5">
     <h3>DONATION CAMP DASHBOARD</h3>
+
     <div class="col-md-4 col-sm-12 ">
-        <a href="/acceptedOrder" class="btn btn-success mx-1 my-1">Orders you have accepted</a>
-    </div>
+                        <a href="/acceptedOrder" class="btn btn-success mx-1 my-1">Orders you have accepted</a>
+                    </div>
         <hr>
         <h4>Clothes Details</h4>
         {% for cloth in clothes %}
         <br>
         <div class="card">
-            <div class="card-header">
+            <div class="card-header aa">
                 <div class="row">
                     <div class="col-md-8 col-sm-12">
                         <h4><pre>User         :: {{cloth.user}}</pre></h4>
@@ -39,7 +43,7 @@
                 <h5 class="card-title"><span style="color: tomato;">{{cloth.user}}</span> wants to donate clothes for {{cloth.clothType}}</h5>
                 <hr>
                 <h5 style="color: darkcyan;">Description - </h5>
-                <p class="card-text">{{cloth.clothDescription}}</p>    
+                <p class="card-text">{{cloth.clothDescription}}</p>
             </div>
         </div>
         {% endfor %}
@@ -67,7 +71,7 @@
                 <h5 class="card-title"><span style="color: tomato;">{{food.user}}</span> wants to donate <span style="color: chocolate;">{{food.foodStatus}} foods</span></h5>
                 <hr>
                 <h5 style="color: darkcyan;">Description - </h5>
-                <p class="card-text">{{food.foodDescription}}</p>    
+                <p class="card-text">{{food.foodDescription}}</p>
             </div>
         </div>
         {% endfor %}
@@ -95,7 +99,7 @@
                 <h5 class="card-title"><span style="color: tomato;">{{other.user}}</span> wants to donate <span style="color: chocolate;">some necessary items</span></h5>
                 <hr>
                 <h5 style="color: darkcyan;">Description - </h5>
-                <p class="card-text">{{other.otherDescription}}</p>    
+                <p class="card-text">{{other.otherDescription}}</p>
             </div>
         </div>
         {% endfor %}
