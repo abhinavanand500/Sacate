@@ -345,4 +345,10 @@ def acceptOther(request, slug):
         messages.error(request, "You are not authorised to call this API")
         return redirect('home')
 
+@login_required(login_url='handleLogin')
+def acceptedOrder(request):
+    users=request.user
+    noti = Notification.objects.filter(superuser=users).order_by('-id')
+    params={'notis':noti}
+    return render(request,'mysite/acceptedOrder.html',params)
 

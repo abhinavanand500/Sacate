@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} Donation Camp Dashboard {% endblock title %}
+
+{% block css %}
+    body{
+      background-color : #FDF2E9  ;
+        font-family: 'Karla', sans-serif;
+      }
+{% endblock css %}
+
+{% block activeDashboard %} active {% endblock activeDashboard %}
+
+{% block body %}
+    <div class="container mt-5">
+    <h3>Orders you have accepted</h3>
+        <hr>
+
+        {% for noti in notis %}
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <h4><pre>Donated By   :: {{noti.enduser}} </h4>
+                        <h4><pre>Address      :: {{noti.address}}</h4>
+                        <h4><pre>Contact      :: {{noti.phone}}</h4>
+                        <h4><pre>Accepted At  :: {{noti.timestamp}}</h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">you accepted <span style="color: tomato;">{{noti.enduser}}'s</span> donation of {{noti.type1}}</h5>
+                <hr>
+                <h5 style="color: darkcyan;">Description - </h5>
+                <p class="card-text">{{noti.description}}</p>
+            </div>
+        </div>
+        {% endfor %}
+        <br>
+        <hr>
+        <br>
+    </div>
+{% endblock body %}

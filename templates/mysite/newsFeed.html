@@ -11,13 +11,19 @@
         color: #0060B6;
         text-decoration: none;
     }
-    
-    a:hover 
+
+    a:hover
     {
-         color:#00A0C6; 
-         text-decoration:none; 
-         cursor:pointer;  
+         color:#00A0C6;
+         text-decoration:none;
+         cursor:pointer;
     }
+    .aa{
+    background-color:#343a40;
+    }
+    <!--.bb{-->
+    <!--    background-color:-->
+    <!--}-->
   {% endblock css %}
 {% block title %} Feed {% endblock title %}
 {% block activeFeed %} active {% endblock activeFeed %}
@@ -46,78 +52,29 @@
                       </div>
                     </div>
                   <button type="submit" class="btn btn-primary my-3 mx-auto">Tweet</button>
-                
+
               </form>
           </div>
           </div>
           <hr>
-        
+
         {% endif %}
         <br>
         <h3>Donation Thanks</h3>
         {% for feed in feeds %}
         <a href="/profile/{{feed.user1}}">
               <div class="card my-4">
-                <div class="card-header">
-                  Thanks for Making Huge Donation
+                <div class="card-header aa" style="color:white">
+                  Thank you for the Donation!
                 </div>
-                <div class="card-body">
+                <div class="card-body bb">
                   <blockquote class="blockquote mb-0">
-                    <p>{{feed.feed}}</p>
-                    
-                    <footer class="blockquote-footer my-2">Donation done by - <strong title="Source Title" ">{{feed.user1}}</strong></footer>
+                    <p style="color:black">{{feed.feed}}</p>
+                    <footer class="blockquote-footer my-2" style="color:#800000">Donation done by - <strong title="Source Title" ">{{feed.user1}}</strong></footer>
                   </blockquote>
-                </div> 
+                </div>
             </div>
           </a>
         {% endfor %}
-        <!-- <div class="row my-2">
-          <div class="bg-dark col-lg-6 col-md-12 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-              <h2 class="display-5">Another headline</h2>
-              <p class="lead">And an even wittier subheading.</p>
-            </div>
-            <div><img src="https://source.unsplash.com/1600x900/?covid" class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
-          </div>
-          <div class="bg-light col-lg-6 col-md-12 text-center overflow-hidden">
-            <div class="my-3 p-3">
-              <h2 class="display-5">Another headline</h2>
-              <p class="lead">And an even wittier subheading.</p>
-            </div>
-            <div><img src="https://source.unsplash.com/1600x900/?covid" class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
-          </div>
-        </div>
-        <div class="row my-2">
-          <div class="bg-light col-lg-6 col-md-12 text-center overflow-hidden">
-            <div class="my-3 p-3">
-              <h2 class="display-5">Another headline</h2>
-              <p class="lead">And an even wittier subheading.</p>
-            </div>
-            <div><img src="https://source.unsplash.com/1600x900/?covid" class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
-          </div>
-          <div class="bg-dark col-lg-6 col-md-12 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-              <h2 class="display-5">Another headline</h2>
-              <p class="lead">And an even wittier subheading.</p>
-            </div>
-            <div><img src="https://source.unsplash.com/1600x900/?covid" class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
-          </div>
-        </div>
-        <div class="row my-2">
-          <div class="bg-dark col-lg-6 col-md-12 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-              <h2 class="display-5">Another headline</h2>
-              <p class="lead">And an even wittier subheading.</p>
-            </div>
-            <div><img src="https://source.unsplash.com/1600x900/?covid" class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
-          </div>
-          <div class="bg-light col-lg-6 col-md-12 text-center overflow-hidden">
-            <div class="my-3 p-3">
-              <h2 class="display-5">Another headline</h2>
-              <p class="lead">And an even wittier subheading.</p>
-            </div>
-            <div><img src="https://source.unsplash.com/1600x900/?covid" class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" alt="Image Not Available"></div>
-          </div>
-        </div> -->
     </div>
 {% endblock body %}

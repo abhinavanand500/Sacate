@@ -24,4 +24,5 @@ urlpatterns = [
     path('notify',views.notify,name='donateCloth'),
     path('donateOther',views.donateOther,name='donateOther'),
     path('acceptOther/<int:slug>',views.acceptOther,name='acceptOther'),
+    path('acceptedOrder',views.acceptedOrder,name='acceptedOrder'),
 ]
