@@ -55,6 +55,12 @@ def handleSignup(request):
         email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
+        phone = request.POST['phone']
+        zip1 = request.POST['zip']
+        user1=Userinfo.objects.filter(username=username)
+        if(user1):
+            messages.error(request, "This username is not valid. Please try with other username.")
+            return redirect('home')
 
         if(len(username)>10):
             messages.error(request, "Username length must be less than 10 character.")
@@ -72,7 +78,7 @@ def handleSignup(request):
         myuser.first_name = fname
         myuser.last_name = lname
         myuser.save()
-        userinformation = Userinfo(username=username,firstname=fname,lastname=lname, email=email, password=pass1)
+        userinformation = Userinfo(username=username,firstname=fname,lastname=lname, email=email, password=pass1,phone=phone, pin=zip1)
         userinformation.save()
         messages.success(request,"You have successfully registered in this Blog. Welcome!")
         return redirect('home')
