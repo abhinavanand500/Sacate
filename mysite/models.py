@@ -82,3 +82,16 @@ class DonatedOther(models.Model):
     timestamp = models.DateTimeField(default=now)
     def __str__(self):
         return self.otherDescription
+
+
+class Finaluser(models.Model):
+    superuser=models.CharField(max_length=30,null=True)
+    enduser=models.CharField(max_length=30,null=True)
+    phone=models.CharField(max_length=30,null=True)
+    address=models.CharField(max_length=100,null=True)
+    timestamp = models.DateTimeField(default=now)
+    type1=models.CharField(max_length=100,null=True)
+    description=models.CharField(max_length=500,null=True)
+    done=models.IntegerField(null=True)
+    def __str__(self):
+        return self.enduser

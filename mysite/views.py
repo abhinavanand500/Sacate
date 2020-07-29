@@ -73,7 +73,6 @@ def handleSignup(request):
         if(pass1!=pass2):
             messages.error(request, "Password not matched. Please try again")
             return redirect('home')
-
         myuser = User.objects.create_user(username,email, pass1)
         myuser.first_name = fname
         myuser.last_name = lname
@@ -263,6 +262,11 @@ def acceptFood(request, slug):
         address=user1[0].address
         desc=foods1[0].foodDescription
         type1='Food'
+        aa=Userinfo.objects.filter(username=enduser1)
+        phone2=aa[0].phone
+        address2=aa[0].address
+        superuser1=Finaluser(superuser=user, enduser=enduser1, phone=phone2, address=address2,type1=type1,description=desc, done=0)
+        superuser1.save()
         notify = Notification(superuser=user, enduser=enduser1, phone=phone1, address=address,type1=type1,description=desc, done=0)
         notify.save()
         foods1.delete()
@@ -289,6 +293,11 @@ def acceptCloth(request, slug):
         address=user1[0].address
         desc=clothes1[0].clothDescription
         type1='Cloth'
+        aa=Userinfo.objects.filter(username=enduser1)
+        phone2=aa[0].phone
+        address2=aa[0].address
+        superuser1=Finaluser(superuser=user, enduser=enduser1, phone=phone2, address=address2,type1=type1,description=desc, done=0)
+        superuser1.save()
         notify = Notification(superuser=user, enduser=enduser1, phone=phone1, address=address, type1=type1,description=desc,done=0)
         notify.save()
         clothes1.delete()
@@ -341,6 +350,11 @@ def acceptOther(request, slug):
         address=user1[0].address
         desc=others1[0].otherDescription
         type1='Other'
+        aa=Userinfo.objects.filter(username=enduser1)
+        phone2=aa[0].phone
+        address2=aa[0].address
+        superuser1=Finaluser(superuser=user, enduser=enduser1, phone=phone2, address=address2,type1=type1,description=desc, done=0)
+        superuser1.save()
         notify = Notification(superuser=user, enduser=enduser1, phone=phone1, address=address, type1=type1,description=desc,done=0)
         notify.save()
         others1.delete()
@@ -354,7 +368,7 @@ def acceptOther(request, slug):
 @login_required(login_url='handleLogin')
 def acceptedOrder(request):
     users=request.user
-    noti = Notification.objects.filter(superuser=users).order_by('-id')
+    noti = Finaluser.objects.filter(superuser=users).order_by('-id')
     params={'notis':noti}
     return render(request,'mysite/acceptedOrder.html',params)
 
