@@ -1,34 +1,37 @@
-{% extends 'base.html' %}
-  {% block css %}
-    body{
-      background-color : #FDF2E9  ;
-        font-family: 'Karla', sans-serif;
-      }
+{% extends 'base.html' %} {% block css %} body{ background-color : #FDF2E9 ;
+font-family: 'Karla', sans-serif; } .jumbotron{ background-color : #DC7633; } {%
+endblock css %} {% block activeHome %} active {% endblock activeHome %} {% block
+body %}
+<div class="container mt-5">
+    <h3>Please fill in some details about your donation.</h3>
+    <hr />
+    <form action="/donateOther" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleOtherDescription"
+                >Description of donation.</label
+            >
+            <textarea
+                class="form-control"
+                id="exampleOtherDescription"
+                name="exampleOtherDescription"
+                cols="20"
+                rows="5"
+            ></textarea>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br />
+    <br />
+    <h4 style="color: red">Please Note:</h4>
+    <h5>
+        Once you submit, your donation will be visible to the registered
+        distributors. Please ensure that all the details are entered correctly
+        before you hit submit and please do not submit multiple responses for
+        the same donation. Thank You!
+    </h5>
+    <br /><br /><br /><br /><br />
+</div>
 
-      .jumbotron{
-        background-color : #DC7633;
-      }
-  {% endblock css %}
-
-  {% block activeHome %} active {% endblock activeHome %}
-  {% block body %}
-    <div class="container mt-5">
-    <h3>Please fill in some details about your donation. </h3>
-        <hr>
-        <form action="/donateOther" method="POST">
-            {% csrf_token %}
-              <div class="form-group">
-                  <label for="exampleOtherDescription">Description of donation.</label>
-                  <textarea class="form-control" id="exampleOtherDescription" name="exampleOtherDescription" cols="20" rows="5"></textarea>
-              </div>
-                <br>
-              <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <br>
-        <br>
-        <h4 style="color:red">Please Note:</h4>
-        <h5>Once you submit, your donation will be visible to the registered distributors. Please ensure that all the details are entered correctly before you hit submit and please do not submit multiple responses for the same donation. Thank You!</h5>
-        <br><br><br><br><br>
-    </div>
-
-{% endblock body %}
+{% endblock body %} {% comment %} created by decoders {% endcomment %}

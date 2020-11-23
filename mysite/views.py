@@ -26,7 +26,8 @@ def contact(request):
             contact = Contact(name=name, email=email,
                               phone=phone, content=content)
             contact.save()
-            messages.success(request, "Your response has been Submitted Successfully. Thank You!")
+            messages.success(
+                request, "Your response has been Submitted Successfully. Thank You!")
     return render(request, 'mysite/contact.html')
 
 
@@ -414,3 +415,4 @@ def acceptedOrder(request):
     noti = Finaluser.objects.filter(superuser=users).order_by('-id')
     params = {'notis': noti}
     return render(request, 'mysite/acceptedOrder.html', params)
+# created by decoders

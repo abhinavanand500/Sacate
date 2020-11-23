@@ -1,42 +1,44 @@
-{% extends 'base.html' %}
-{% block title %} Donate Food {% endblock title %}
-  {% block css %}
-    body{
-      background-color : #FDF2E9  ;
-        font-family: 'Karla', sans-serif;
-      }
-
-      .jumbotron{
-        background-color : #DC7633;
-      }
-  {% endblock css %}
-
-  {% block activeHome %} active {% endblock activeHome %}
-  {% block body %}
-    <div class="container mt-5">
+{% extends 'base.html' %} {% block title %} Donate Food {% endblock title %} {%
+block css %} body{ background-color : #FDF2E9 ; font-family: 'Karla',
+sans-serif; } .jumbotron{ background-color : #DC7633; } {% endblock css %} {%
+block activeHome %} active {% endblock activeHome %} {% block body %}
+<div class="container mt-5">
     <h3>Please fill in the details of your donation.</h3>
-        <hr>
-        <form action="/donateFood" method="POST">
-            {% csrf_token %}
-              <div class="form-group">
-                <label for="foodStatus">Food Status</label>
-                <select id="foodStatus" name="foodStatus" class="form-control">
+    <hr />
+    <form action="/donateFood" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="foodStatus">Food Status</label>
+            <select id="foodStatus" name="foodStatus" class="form-control">
+                <option value="Uncooked">Uncooked</option>
+                <option value="Cooked">Cooked</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFoodDescription"
+                >Description of what you want to donate</label
+            >
+            <textarea
+                class="form-control"
+                id="exampleFoodDescription"
+                name="exampleFoodDescription"
+                cols="20"
+                rows="5"
+            ></textarea>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br /><br />
+    <h4 style="color: red">Please Note:</h4>
+    <h5>
+        Once you submit, your donation will be visible to the registered
+        distributors. Please specify the shelf life of the products and ensure
+        that all the details are entered correctly before you hit submit and
+        please do not submit multiple responses for the same donation. Thank
+        You!
+    </h5>
+</div>
 
-                    <option value="Uncooked">Uncooked</option>
-                    <option value="Cooked">Cooked</option>
-                </select>
-              </div>
-              <div class="form-group">
-                  <label for="exampleFoodDescription">Description of what you want to donate</label>
-                  <textarea class="form-control" id="exampleFoodDescription" name="exampleFoodDescription" cols="20" rows="5"></textarea>
-              </div>
-                <br>
-              <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <br><br>
-        <h4 style="color:red">Please Note:</h4>
-        <h5>Once you submit, your donation will be visible to the registered distributors. Please specify the shelf life of the products and ensure that all the details are entered correctly before you hit submit and please do not submit multiple responses for the same donation. Thank You!</h5>
-    </div>
-
-        <br><br><br><br><br><br>
-{% endblock body %}
+<br /><br /><br /><br /><br /><br />
+{% endblock body %} {% comment %} created by decoders {% endcomment %}

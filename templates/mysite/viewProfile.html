@@ -1,49 +1,51 @@
-{% extends 'base.html' %}
-{% block title %} User Information {% endblock title %}
-
-{% block css %}
-    body{
-      background-color : #FDF2E9  ;
-        font-family: 'Karla', sans-serif;
-      }
-{% endblock css %}
-
-
-{% block activeHome %} active {% endblock activeHome %}
-
-{% block body %}
-    <div class="container mt-5">
+{% extends 'base.html' %} {% block title %} User Information {% endblock title
+%} {% block css %} body{ background-color : #FDF2E9 ; font-family: 'Karla',
+sans-serif; } {% endblock css %} {% block activeHome %} active {% endblock
+activeHome %} {% block body %}
+<div class="container mt-5">
     <h3>Contact NASSCOM Admin</h3>
-        <hr>
-        {% for user in users %}
-            <div class="col-7 my-4 mx-auto">
-                <div class="mx-5 my-4">
-            <img class="rounded-circle " src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png" alt="Generic placeholder image" width="140" height="140">
-                </div>
-            <h2>{{user.firstname}} {{user.lastname}}</h2>
-            <hr>
-            <div class="row">
-                <div class="col-5">
-                    <h4 class="my-3">Username</h4> 
-                    <h4 class="my-3">Email</h4> 
-                    <h4 class="my-3">Phone</h4> 
-                    <h4 class="my-3">Postal Address</h4>
-                    <h4 class="my-3">Address</h4>
-
-
-
-                </div>
-                <div class="col-7">
-                    <h4 class="my-3"><span style="color: blueviolet;">{{user.username}}</span></h4>
-                    <h4 class="my-3"><span style="color: blueviolet;">{{user.email}}</span></h4>
-                    <h4 class="my-3"><span style="color: blueviolet;">{{user.phone}}</span></h4>
-                    <h4 class="my-3"><span style="color: blueviolet;">{{user.pin}}</span></h4>
-                    <h4 class="my-3"><span style="color: blueviolet;">{{user.address}}</span></h4>
-
-                </div>
+    <hr />
+    {% for user in users %}
+    <div class="col-7 my-4 mx-auto">
+        <div class="mx-5 my-4">
+            <img
+                class="rounded-circle"
+                src="https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png"
+                alt="Generic placeholder image"
+                width="140"
+                height="140"
+            />
+        </div>
+        <h2>{{user.firstname}} {{user.lastname}}</h2>
+        <hr />
+        <div class="row">
+            <div class="col-5">
+                <h4 class="my-3">Username</h4>
+                <h4 class="my-3">Email</h4>
+                <h4 class="my-3">Phone</h4>
+                <h4 class="my-3">Postal Address</h4>
+                <h4 class="my-3">Address</h4>
             </div>
-            <hr>
-          </div>
-        {% endfor %}
+            <div class="col-7">
+                <h4 class="my-3">
+                    <span style="color: blueviolet">{{user.username}}</span>
+                </h4>
+                <h4 class="my-3">
+                    <span style="color: blueviolet">{{user.email}}</span>
+                </h4>
+                <h4 class="my-3">
+                    <span style="color: blueviolet">{{user.phone}}</span>
+                </h4>
+                <h4 class="my-3">
+                    <span style="color: blueviolet">{{user.pin}}</span>
+                </h4>
+                <h4 class="my-3">
+                    <span style="color: blueviolet">{{user.address}}</span>
+                </h4>
+            </div>
+        </div>
+        <hr />
     </div>
-{% endblock body %}
+    {% endfor %}
+</div>
+{% endblock body %} {% comment %} created by decoders {% endcomment %}

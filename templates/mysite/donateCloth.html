@@ -1,41 +1,44 @@
-{% extends 'base.html' %}
-{% block title %} Donate Clothes {% endblock title %}
-  {% block css %}
-    body{
-      background-color : #FDF2E9  ;
-        font-family: 'Karla', sans-serif;
-      }
-
-      .jumbotron{
-        background-color : #DC7633;
-      }
-  {% endblock css %}
-
-  {% block activeHome %} active {% endblock activeHome %}
-  {% block body %}
-    <div class="container mt-5">
+{% extends 'base.html' %} {% block title %} Donate Clothes {% endblock title %}
+{% block css %} body{ background-color : #FDF2E9 ; font-family: 'Karla',
+sans-serif; } .jumbotron{ background-color : #DC7633; } {% endblock css %} {%
+block activeHome %} active {% endblock activeHome %} {% block body %}
+<div class="container mt-5">
     <h3>Please fill in the details of your donation.</h3>
-        <hr>
-        <form action="/donateCloth" method="POST">
-            {% csrf_token %}
-              <div class="form-group">
-                <label for="clothType">Gender</label>
-                <select id="clothType" name="clothType" class="form-control">
-
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-              </div>
-              <div class="form-group">
-                  <label for="exampleClothDescription">Description of donation.</label>
-                  <textarea class="form-control" id="exampleClothDescription" name="exampleClothDescription" cols="20" rows="5"></textarea>
-              </div>
-                <br>
-              <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-         <br>
-        <br>
-        <h4 style="color:red">Please Note:</h4>
-        <h5>Once you submit, your donation will be visible to the registered distributors. Please specify the shelf life of the products and ensure that all the details are entered correctly before you hit submit and please do not submit multiple responses for the same donation. Thank You!</h5>
-    </div><br>
-{% endblock body %}
+    <hr />
+    <form action="/donateCloth" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="clothType">Gender</label>
+            <select id="clothType" name="clothType" class="form-control">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleClothDescription"
+                >Description of donation.</label
+            >
+            <textarea
+                class="form-control"
+                id="exampleClothDescription"
+                name="exampleClothDescription"
+                cols="20"
+                rows="5"
+            ></textarea>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br />
+    <br />
+    <h4 style="color: red">Please Note:</h4>
+    <h5>
+        Once you submit, your donation will be visible to the registered
+        distributors. Please specify the shelf life of the products and ensure
+        that all the details are entered correctly before you hit submit and
+        please do not submit multiple responses for the same donation. Thank
+        You!
+    </h5>
+</div>
+<br />
+{% endblock body %} {% comment %} created by decoders {% endcomment %}

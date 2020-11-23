@@ -74,7 +74,7 @@ We provided two options for normal User to clarify their doubts. Both of them is
 
 If you have any question related to functioning of our projects then you can refer our videos. After watching this you will be able to know our project and motive of this project end to end.
 
--   [FULL VIDEO](https://www.youtube.com/watch?v=xKgpqD3nmIM)
+-   [FULL VIDEO](https://www.youtube.com/watch?v=Uw8CBWR785Y&feature=youtu.be)
 
 -   [DEMO VIDEO](https://www.youtube.com/watch?v=A2BVjDvugpw)
 
